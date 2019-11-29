@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Wallpoet&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="stylesheet.css"></style>
+    <script src="script.js"></script>
+    <script src="profilescript.js"></script>
+</head>
+
+<body class="container" onload="myMove()">
+    <audio id="buttonAudio1" controls style="display:none">
+			<source src="FuturisticButtonClick1.wav" type="audio/mpeg">
+		</audio>
+
+    <audio id="buttonAudio2" controls style="display:none">
+			<source src="FuturisticButtonClick4.wav" type="audio/mpeg">
+		</audio>
+
+    <div class="bg bkimg"></div>
+    
+    <!-- USERNAME -->
+    <div id="loginContainer">
+        <span class="spantext" id="spantext"></span>
+        <div id="box1">
+            <div id="inputtext">
+                <input id="textbox" type="text" spellcheck="false" name="id" onkeydown="playAudio1(event)">
+            </div>
+        </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div id="passContainer" style="display:none">
+        <span class="spantext" id="spanpass"></span>
+        <div id="box2">
+            <div id="inputpass">
+                <input id="passbox" type="password" name="pass" onkeydown="playAudio2(event)">
+            </div>
+        </div>
+    </div>
+
+    <!-- ACCESS GRANTED AND PROFILE IMAGE -->
+    <div id="profileContainer" style="display:none">
+        <span id="spanwelcome">WELCOME</span>
+        <!-- WELCOME USER -->
+        <div id="box3" class="bg">
+            <img id="profimg" src="rp.png">
+            <div id="proftext">
+                <span class="caption" id="name">NAME:&emsp;</span>  <span class="topic" id="namePerson"></span> <br>
+                <span class="caption" id="age">AGE:&emsp;&emsp;</span>  <span class="topic" id="agePerson"></span> <br>
+                <span class="caption" id="dept">DEPT.:&emsp;</span>  <span class="topic" id="deptPerson"></span> <br>
+                <span class="caption" id="rank">RANK:&emsp;</span>  <span class="topic" id="rankPerson"></span> <br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
