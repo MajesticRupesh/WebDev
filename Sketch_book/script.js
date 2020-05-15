@@ -1,9 +1,4 @@
-<html>
-<head>
-<title>Sketchpad</title>
-
-<script type="text/javascript">
-    var canvas,ctx;
+var canvas,ctx;
     // Variables to keep track of the mouse position and left-button status
     var mouseX,mouseY,mouseDown=0;
     // Variables to keep track of the touch position
@@ -232,196 +227,24 @@
         document.getElementById("eraser").style.backgroundColor = "blue";
         document.getElementById("pencil").style.backgroundColor = "lightblue";
     }
-</script>
 
-<style>
-    /* Some CSS styling */
-    #sketchpadapp {
-        /* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+
+
+
+    var canvas,ctx;
+    canvas = document.getElementById('sketchpad');
+
+    // If the browser supports the canvas tag, get the 2d drawing context for this canvas
+    if (canvas.getContext)
+        ctx = canvas.getContext('2d');
+    canva();
+    function canva()
+    {
+        ctx.canvas.width  = window.innerWidth*7.5/10;
+        ctx.canvas.height = window.innerHeight - 70;
     }
 
-    #sketchpad {
-        float:left;
-        border:2px solid #888;
-        border-radius:4px;
-        position:relative; /* Necessary for correct mouse co-ords in Firefox */
-    }
 
-    #clearbutton,#savebutton {
-        font-size: 15px;
-        padding: 10px;
-        -webkit-appearance: none;
-        background: #eee;
-        border: 1px solid #888;
-    }
 
-    .rightside {
-        margin-left: 10%; /* Same as the width of the sidenav */
-        padding: 2px 330px 10px 10px;
-    }
 
-    .sidenav {
-        height: 100%;
-        width: 10%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        padding-top: 20px;
-    }
-
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 1.5vw;
-        color: #818181;
-        display: block;
-    }
-
-    .sidenav a:hover {
-        color: #f1f1f1;
-    }
-
-    .rtsidenav {
-        height: 100%;
-        width: 20%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        right: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        padding-top: 20px;
-    }
-
-    .rtsidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 15px;
-        color: #818181;
-        display: block;
-    }
-
-    .rtsidenav a:hover {
-        color: #f1f1f1;
-    }
-
-    .slidecontainer {
-    width: 100%;
-    }
-
-    .slider {
-    -webkit-appearance: none;
-    width: 90%;
-    height: 18px;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    margin-left: 5%;
-    }
-
-    .slider:hover {
-    opacity: 1;
-    }
-
-    .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 22px;
-    background: #4CAF50;
-    cursor: pointer;
-    }
-
-    .slider::-moz-range-thumb {
-    width: 25px;
-    height: 22px;
-    background: #4CAF50;
-    cursor: pointer;
-    }
-
-    #myRange1{
-        background: #FF0000;
-    }
-
-    #myRange2{
-        background: #00FF00;
-    }
-
-    #myRange3{
-        background: #0000FF;
-    }
-</style>
-</head>
-
-<body onload="init()" onresize="canva()">
-    <div class="sidenav">
-        <a href>Notebook</a>
-        <a href>Sketchbook</a>
-    </div>
-
-    <div class="rtsidenav">
-        <div class="inputrow">
-            <input type="submit" value="Clear Sketchpad" id="clearbutton" onclick="clearCanvas(canvas,ctx);" style="margin:10px;">
-            <input type="submit" value="Save Sketchpad to Local" id="savebutton" onclick="toimg()" style="margin:10px;">
-            <form action="." method="POST">
-                <input type="submit" name="new" class="btn btn-success" value="Save note" style="margin:10px;">
-            </form>
-            <div class="slidecontainer">
-                <fieldset style="border:5px solid red;margin-left:5px;margin-right:5px"> <!--COLOR-->
-                    <legend style="color:white">Color</legend>
-                      <input type="range" min="0" max="255" value="0" class="slider" id="myRange1" oninput="slide1();"> <!--RED-->
-                      <input type="range" min="0" max="255" value="0" class="slider" id="myRange2" oninput="slide2();"> <!--GREEN-->
-                      <input type="range" min="0" max="255" value="0" class="slider" id="myRange3" oninput="slide3();"> <!--BLUE-->
-                      <input type="range" min="0" max="255" value="255" class="slider" id="myRange4" oninput="slide4();"> <!--ALPHA-->
-                      <p style="color:#FFFFFF;margin-left:5%">RGBA: <span id="demo1">0 </span> <span id="demo2">0 </span> <span id="demo3">0 </span> <span id="demo4">255</span></p>
-                      <div id="changer" style="width:85%;height:18px;border:5px solid black;outline:3px solid white;margin-left:5%;background-color:black"></div>
-                </fieldset>
-                <fieldset style="border:5px solid red;margin-left:5px;margin-right:5px"> <!--SIZE-->
-                    <legend style="color:white">Size</legend>
-                      <input type="range" min="1" max="20" value="12" class="slider" id="SizeRange" oninput="sizeSlide();">
-                      <p style="color:#FFFFFF;margin-left:5%">Size: <span id="sizeDemo">12 </span></p>
-                      <div id="sizeChanger" style="width:85%;height:12px;border:9px solid white;margin-left:5%;background-color:black"></div>
-                </fieldset>
-                <fieldset style="border:5px solid red;margin-left:5px;margin-right:5px">
-                    <legend style="color:white">Sketch Type</legend>
-                      <button id="pencil" onclick="pencil()" style="color:white;font-size:20px">Pencil</button>
-                      <button id="eraser" onclick="eraser()" style="color:white;font-size:20px">Eraser</button>
-                </fieldset>
-            </div>
-        </div>
-    </div>
-
-    <div id="sketchpadapp">
-
-        <div class="rightside">
-            <textarea id="title" rows=1 col=80 style="margin-bottom:10px;font-size:18px;" placeholder="Enter title"></textarea><br>
-            <canvas id="sketchpad"></canvas>
-            <script>
-                var canvas,ctx;
-                canvas = document.getElementById('sketchpad');
-
-                // If the browser supports the canvas tag, get the 2d drawing context for this canvas
-                if (canvas.getContext)
-                    ctx = canvas.getContext('2d');
-				canva();
-				function canva()
-				{
-                ctx.canvas.width  = window.innerWidth*6.5/10;
-                ctx.canvas.height = window.innerHeight - 80;
-				}
-            </script>
-
-        </div>
-    </div>
-</body>
-</html>
+    

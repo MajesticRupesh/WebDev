@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketchpad</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+<body onload="init()" onresize="canva()">
+
+    <div id="sketchpadapp">
+        <div class="rightside">
+            <input tyle="text" id="title" placeholder="Enter title">
+            <button type="button" class="btn btn-danger" onclick="clearCanvas(canvas,ctx);">Clear</button>
+            <button type="button" class="btn btn-success" onclick="toimg()">Save</button>
+            
+            <span class="btn" id="changer"></span>
+            <!--<div id="changer" style="width:20px;height:18px;border:5px solid black;background-color:black"></div>-->
+            
+            <br>
+            <canvas id="sketchpad"></canvas>
+        </div>
+    </div>
+
+    <div class="rtsidenav">
+        <div class="inputrow">
+            
+            
+            <div class="slidecontainer">
+                <fieldset style="border:2px solid red; padding:10px"> <!--COLOR-->
+                    <legend style="color:white">Color</legend>
+                      <input type="range" min="0" max="255" value="0" class="slider" id="myRange1" oninput="slide1();"> <!--RED-->
+                      <input type="range" min="0" max="255" value="0" class="slider" id="myRange2" oninput="slide2();"> <!--GREEN-->
+                      <input type="range" min="0" max="255" value="0" class="slider" id="myRange3" oninput="slide3();"> <!--BLUE-->
+                      <input type="range" min="0" max="255" value="255" class="slider" id="myRange4" oninput="slide4();"> <!--ALPHA-->
+                      <p style="color:#FFFFFF;margin-left:5%">RGBA: <span id="demo1">0 </span> <span id="demo2">0 </span> <span id="demo3">0 </span> <span id="demo4">255</span></p>
+                      
+                </fieldset>
+                <fieldset style="border:2px solid red;padding-left: 0;"> <!--SIZE-->
+                    <legend style="color:white">Size</legend>
+                      <input type="range" min="1" max="20" value="12" class="slider" id="SizeRange" oninput="sizeSlide();">
+                      <p style="color:#FFFFFF;margin-left:5%">Size: <span id="sizeDemo">12 </span></p>
+                      <div id="sizeChanger" style="width:85%;height:12px;border:9px solid white;margin-left:5%;background-color:black"></div>
+                </fieldset>
+                <fieldset style="border:2px solid red;">
+                    <legend style="color:white">Sketch</legend>
+                      <button id="pencil" onclick="pencil()" style="color:white;font-size:20px;border: 0;">Pencil</button>
+                      <button id="eraser" onclick="eraser()" style="color:white;font-size:20px;border: 0;">Eraser</button>
+                      
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+/* Some CSS styling */
+#sketchpadapp {
+    /* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: 10px;
+}
+
+#sketchpad {
+    margin-top: 5px;
+    float:left;
+    border:2px solid #888;
+    border-radius:4px;
+    position:relative; /* Necessary for correct mouse co-ords in Firefox */
+}
+
+.rightside {
+    margin-left: 1%; /* Same as the width of the sidenav */
+    /*padding: 2px 330px 10px 10px;*/
+}
+
+.rtsidenav {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.rtsidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+}
+
+.rtsidenav a:hover {
+    color: #f1f1f1;
+}
+
+.slidecontainer {
+width: 100%;
+}
+
+.slider {
+-webkit-appearance: none;
+width: 99%;
+height: 18px;
+outline: none;
+opacity: 0.7;
+-webkit-transition: .2s;
+transition: opacity .2s;
+margin-left: 5%;
+}
+
+.slider:hover {
+opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 25px;
+height: 22px;
+background: #4CAF50;
+cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+width: 25px;
+height: 22px;
+background: #4CAF50;
+cursor: pointer;
+}
+
+#myRange1{
+    background: #FF0000;
+}
+
+#myRange2{
+    background: #00FF00;
+}
+
+#myRange3{
+    background: #0000FF;
+}
+
+
+
+.btn {
+    outline: none;
+    color:white;
+    border:0;
+    font-size: 16px;
+    padding:3px 8px;
+    border-radius: 2px;
+    transition: 0.1s;
+    background-color: black;
+    margin-left: 5px;
+}
+
+#changer {
+    padding: 3px 16px;
+    border: 1px solid white;
+    outline: 1px solid black;
+}
+
+.btn:hover {
+    filter: brightness(90%);
+}
+
+.btn-danger {
+    background-color: #DC3545;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+}
+
+.btn-success {
+    background-color: #28A745;
+}
