@@ -16,24 +16,6 @@
                 overflow: hidden;
             }
 
-            a {
-                color: #ff0;
-                text-decoration: none;
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-            button {
-                cursor: pointer;
-                text-transform: uppercase;
-            }
-
-            canvas {
-                display: block;
-            }
-
             #info {
                 position: absolute;
                 top: 0px;
@@ -50,52 +32,17 @@
 				font-size: 20px;
 				color: #ff0;
 				text-shadow: 0 0 10px red;
-            }
+			}
+			
+			#backcover {
+				display: block;
+				position: fixed;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				background-color: #111;
+			}
 
-            a, button, input, select {
-                pointer-events: auto;
-            }
-
-            .dg.ac {
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-                z-index: 2 !important; /* TODO Solve this in HTML */
-            }
-
-            #overlay {
-                position: absolute;
-                z-index: 2;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                opacity: 1;
-                background-color: #000000;
-				color: #ffffff;
-            }
-
-            #overlay > div {
-                text-align: center;
-            }
-
-            #overlay > div > button {
-                height: 20px;
-                background: transparent;
-                color: #ffffff;
-                outline: 1px solid #ffffff;
-                border: 0px;
-                cursor: pointer;
-            }
-
-            #overlay > div > p {
-                color: #777777;
-                font-size: 12px;
-            }
 		</style>
 		<link rel="stylesheet" href="../css/center_atom.css">
 		<script src="../js/pace.js"></script>
@@ -105,12 +52,8 @@
   crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div id="overlay">
-			<div>
-				<button id="startButton">Start Demo</button>
-				<p>Using device orientation might require a user interaction.</p>
-			</div>
-		</div>
+		<div id="backcover"></div>
+		
 		<div id="info">MAJESTIC RUPESH</div>
 
         <script src="../js/three.js"></script>
@@ -118,28 +61,16 @@
         <script src="../js/CSS3DRenderer.js"></script>
 
 		<script>
-			Pace.on("start", function(){
-				$("#overlay").hide();
-				$("#info").hide();
+			Pace.on("done", function(){
+				$("#backcover").hide();
 			});
 			
-			Pace.on("done", function(){
-				$("#overlay").show();
-				$("#info").show();
-			});
 			var camera, scene, renderer;
 			var controls;
-
-			var startButton = document.getElementById( 'startButton' );
-			startButton.addEventListener( 'click', function () {
-				init();
-				animate();
-			}, false );
+			init();
+			animate();
 
 			function init() {
-
-				var overlay = document.getElementById( 'overlay' );
-				overlay.remove();
 
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
 				controls = new THREE.DeviceOrientationControls( camera );
