@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        margin: -5px;
+        overflow: hidden;  
+      }
+    </style>
+    <title>Realistic Water Ripple Effect</title>
+  </head>
+  <body>
+    <script src="../js/pixi.js"></script>
+    <script>
+    var app;
+    var image;
+    var imageRatio = [1024, 573];
+    var maxR;
+    function initPixi() {
+      app = new PIXI.Application({ resizeTo: window });
+      document.body.appendChild(app.view);
+
+      image = new PIXI.Sprite.from("../assets/water.jpg");
+      maxR = window.innerWidth/imageRatio[0] > window.innerHeight/imageRatio[1] ? window.innerWidth/imageRatio[0]: window.innerHeight/imageRatio[1];
+      image.width = imageRatio[0]*maxR;
+      image.height = imageRatio[1]*maxR;
+      app.stage.addChild(image);
+
+      displacementSprite = new PIXI.Sprite.from("../assets/smoke.png");
+      displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
+      displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+      app.stage.addChild(displacementSprite);
+      app.stage.filters = [displacementFilter];
+
+      app.renderer.view.style.transform = 'scale(1.02)';
+      displacementSprite.scale.x = 4;
+      displacementSprite.scale.y = 4;
+      animate();
+    }
+    function animate() {
+      displacementSprite.x += 10;
+      displacementSprite.y += 4;
+      requestAnimationFrame(animate);
+    }
+    initPixi();
+
+    /* This function handles the viewport when it is resized */
+    window.addEventListener('resize', function() {
+        var width = imageRatio[0]*maxR;
+        var height = imageRatio[1]*maxR;
+        image.width = width;
+        image.height = height;
+    });
+
+    
+    </script>
+  </body>
+</html>
