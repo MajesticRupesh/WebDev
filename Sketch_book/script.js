@@ -169,51 +169,11 @@ var canvas,ctx;
         link.click();
     }
 
-    function slide1() {
-        document.getElementById("demo1").innerHTML = document.getElementById("myRange1").value;
-        r=document.getElementById("myRange1").value;
-        ctx.strokeStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("changer").style.backgroundColor= "rgba("+r+","+g+","+b+","+(a/255)+")";
+    function colorslider(event) {
+        ctx.strokeStyle = event.value;
+        document.getElementById("pencilSize").style.background = 'linear-gradient(to right,' +event.value+' 0%, '+event.value+' ' + document.getElementById("pencilSize").value + '%, #fff ' + document.getElementById("pencilSize").value + '%, white 100%)';
         document.getElementById("eraser").style.backgroundColor = "lightblue";
         document.getElementById("pencil").style.backgroundColor = "blue";
-    }
-
-    function slide2() {
-        document.getElementById("demo2").innerHTML = document.getElementById("myRange2").value;
-        g=document.getElementById("myRange2").value;
-        ctx.strokeStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("changer").style.backgroundColor= "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("eraser").style.backgroundColor = "lightblue";
-        document.getElementById("pencil").style.backgroundColor = "blue";
-    }
-
-    function slide3() {
-        document.getElementById("demo3").innerHTML = document.getElementById("myRange3").value;
-        b=document.getElementById("myRange3").value;
-        ctx.strokeStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("changer").style.backgroundColor= "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("eraser").style.backgroundColor = "lightblue";
-        document.getElementById("pencil").style.backgroundColor = "blue";
-    }
-
-    function slide4() {
-        document.getElementById("demo4").innerHTML = document.getElementById("myRange4").value;
-        a=document.getElementById("myRange4").value;
-        ctx.strokeStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("changer").style.backgroundColor= "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("eraser").style.backgroundColor = "lightblue";
-        document.getElementById("pencil").style.backgroundColor = "blue";
-    }
-
-    function sizeSlide() {
-        var topS,bottomS;
-        brushSize=document.getElementById("SizeRange").value;
-        document.getElementById("sizeDemo").innerHTML=brushSize;
-        topS=parseInt((30-brushSize)/2);
-        bottomS=30-brushSize-topS;
-        document.getElementById("sizeChanger").style.borderTopWidth= topS+"px";
-        document.getElementById("sizeChanger").style.borderBottomWidth=bottomS+"px";
-        document.getElementById("sizeChanger").style.height=brushSize+"px";
     }
 
     function pencil() {
@@ -228,23 +188,23 @@ var canvas,ctx;
         document.getElementById("pencil").style.backgroundColor = "lightblue";
     }
 
-
+    document.getElementById("pencilSize").oninput = function() {
+        this.style.background = 'linear-gradient(to right,' +document.getElementById("colorslider").value+' 0%, '+document.getElementById("colorslider").value+' ' + this.value + '%, #fff ' + this.value + '%, white 100%)';
+        this.style.height = (this.value/6)+"px";
+        brushSize = this.value/6;
+    };
 
 
     var canvas,ctx;
     canvas = document.getElementById('sketchpad');
 
     // If the browser supports the canvas tag, get the 2d drawing context for this canvas
+    // INITIALIZATION of canvas
     if (canvas.getContext)
         ctx = canvas.getContext('2d');
     canva();
     function canva()
     {
-        ctx.canvas.width  = window.innerWidth*7.5/10;
+        ctx.canvas.width  = window.innerWidth*0.97;
         ctx.canvas.height = window.innerHeight - 70;
     }
-
-
-
-
-    
