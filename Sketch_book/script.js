@@ -184,8 +184,9 @@ var canvas,ctx;
 
     // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     // INITIALIZATION of canvas
-    if (canvas.getContext)
+    if (canvas.getContext) {
         ctx = canvas.getContext('2d');
+    }
     canva();
     function canva()
     {
