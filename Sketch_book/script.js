@@ -158,8 +158,6 @@ var canvas,ctx;
             canvas.addEventListener('touchend', sketchpad_touchEnd, false);
             canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         }
-        document.getElementById("pencil").style.backgroundColor = "blue";
-        document.getElementById("eraser").style.backgroundColor = "lightblue";
     }
 
     function toimg() {
@@ -172,20 +170,6 @@ var canvas,ctx;
     function colorslider(event) {
         ctx.strokeStyle = event.value;
         document.getElementById("pencilSize").style.background = 'linear-gradient(to right,' +event.value+' 0%, '+event.value+' ' + document.getElementById("pencilSize").value + '%, #fff ' + document.getElementById("pencilSize").value + '%, white 100%)';
-        document.getElementById("eraser").style.backgroundColor = "lightblue";
-        document.getElementById("pencil").style.backgroundColor = "blue";
-    }
-
-    function pencil() {
-        ctx.strokeStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-        document.getElementById("eraser").style.backgroundColor = "lightblue";
-        document.getElementById("pencil").style.backgroundColor = "blue";
-    }
-
-    function eraser() {
-        ctx.strokeStyle = "rgba("+255+","+255+","+255+","+(a/255)+")";
-        document.getElementById("eraser").style.backgroundColor = "blue";
-        document.getElementById("pencil").style.backgroundColor = "lightblue";
     }
 
     document.getElementById("pencilSize").oninput = function() {
@@ -206,5 +190,5 @@ var canvas,ctx;
     function canva()
     {
         ctx.canvas.width  = window.innerWidth*0.97;
-        ctx.canvas.height = window.innerHeight - 70;
+        ctx.canvas.height = window.innerHeight - 50;
     }

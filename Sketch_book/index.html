@@ -11,17 +11,15 @@
 
     <div id="sketchpadapp">
         <div class="rightside">
+            <div>
             <input tyle="text" id="title" placeholder="Enter title">
             <button type="button" class="btn btn-danger" onclick="clearCanvas(canvas,ctx);">Clear</button>
             <button type="button" class="btn btn-success" onclick="toimg()">Save</button>
             
             <input type="color" onchange="colorslider(this)" id="colorslider">
             <input type="range" id="pencilSize" min="1" max="100">
-
-            <button id="pencil" onclick="pencil()" style="color:white;font-size:20px;border: 0;">P</button>
-            <button id="eraser" onclick="eraser()" style="color:white;font-size:20px;border: 0;">E</button>
-
-            <br>
+            </div>
+            
             <canvas id="sketchpad"></canvas>
         </div>
     </div>

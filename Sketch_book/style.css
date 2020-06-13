@@ -10,7 +10,6 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin-top: 10px;
 }
 
 #sketchpad {
@@ -22,12 +21,25 @@ body{
 
 .rightside {
     margin-left: 1%;
-    
     position: relative;
     overflow: hidden;
 }
 
-.rightside > #pencilSize {
+.rightside > div > #colorslider {
+    width: 20px;
+    position: relative;
+    top: 5px;
+    
+}
+
+.rightside > div > #colorslider::-webkit-color-swatch-wrapper {
+    padding: 1px;
+}
+.rightside > div > #colorslider::-webkit-color-swatch {
+    border: none;
+}
+
+.rightside > div > #pencilSize {
     background: linear-gradient(to right, #000 0%, #000 50%, #fff 50%, #fff 100%);
     border: solid 1px #82CFD0;
     border-radius: 8px;
@@ -48,6 +60,27 @@ body{
     transition: 0.1s;
     background-color: black;
     margin-left: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+    .btn {
+        padding: 3px;
+        font-size: 12px;
+        margin-left: -1px;
+    }
+
+    #title {
+        width: 100px;
+    }
+
+    .rightside > div> #colorslider {
+        width: 20px;
+        
+    }
+
+    .rightside > div > #pencilSize {
+        width: 90px;
+    }
 }
 
 .btn:hover {
