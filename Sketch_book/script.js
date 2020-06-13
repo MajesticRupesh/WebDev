@@ -191,4 +191,6 @@ var canvas,ctx;
     {
         ctx.canvas.width  = window.innerWidth*0.97;
         ctx.canvas.height = window.innerHeight - 50;
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
