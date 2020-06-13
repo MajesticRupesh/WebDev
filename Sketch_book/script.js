@@ -162,8 +162,8 @@ var canvas,ctx;
 
     function toimg() {
         var link = document.createElement('a');
-        link.download = document.getElementById("title").value+".bmp";
-        link.href = canvas.toDataURL("image/bmp").replace("image/bmp", "image/octet-stream");;
+        link.download = document.getElementById("title").value+".png";
+        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
         link.click();
     }
 
