@@ -47,6 +47,8 @@ var canvas,ctx;
     // Clear the canvas context using the canvas width and height
     function clearCanvas(canvas,ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     // Keep track of the mouse button being pressed and draw a dot at current location
@@ -163,7 +165,7 @@ var canvas,ctx;
     function toimg() {
         var link = document.createElement('a');
         link.download = document.getElementById("title").value+".png";
-        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         link.click();
     }
 
