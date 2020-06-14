@@ -7,7 +7,7 @@ var canvas,ctx;
     // We set it to -1 at the start to indicate that we don't have a good value for it yet
     var lastX,lastY=-1;
     var r=0,g=0,b=0,a=255;
-    var brushSize=12;
+    var brushSize=100/12;
 
     // Draws a line between the specified position on the supplied canvas name
     // Parameters are: A canvas context, the x position, the y position, the size of the dot
@@ -164,7 +164,7 @@ var canvas,ctx;
 
     function toimg() {
         var link = document.createElement('a');
-        link.download = document.getElementById("title").value+".png";
+        link.download = "download.png";
         link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         link.click();
     }
