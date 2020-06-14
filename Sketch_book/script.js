@@ -1,13 +1,13 @@
 var canvas,ctx;
-    // Variables to keep track of the mouse position and left-button status
-    var mouseX,mouseY,mouseDown=0;
-    // Variables to keep track of the touch position
-    var touchX,touchY;
-    // Keep track of the old/last position when drawing a line
-    // We set it to -1 at the start to indicate that we don't have a good value for it yet
-    var lastX,lastY=-1;
-    var r=0,g=0,b=0,a=255;
-    var brushSize=100/12;
+// Variables to keep track of the mouse position and left-button status
+var mouseX,mouseY,mouseDown=0;
+// Variables to keep track of the touch position
+var touchX,touchY;
+// Keep track of the old/last position when drawing a line
+// We set it to -1 at the start to indicate that we don't have a good value for it yet
+var lastX,lastY=-1;
+var r=0,g=0,b=0,a=255;
+var brushSize=100/12;
 
     // Draws a line between the specified position on the supplied canvas name
     // Parameters are: A canvas context, the x position, the y position, the size of the dot
@@ -21,8 +21,6 @@ var canvas,ctx;
 
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
-    //ctx.lineJoin = "round";
-
 
     // Draw a filled line
     ctx.beginPath();
